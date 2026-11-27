@@ -1,0 +1,6 @@
+ALL n=5871  top1 57.6%  top2 75.1%  top3 82.6%  top5 90.1%  top10 96.7%  mean rank 2.47  | per game: tap 8.69 expand 1.74 typed 1.14 of 11.6  no-typing 44%  | 0.20s/suggestion
+  dist    1 n= 709  top1 84.3%  top2 92.2%  top5 97.6%  mean rank 1.42
+  dist    2 n= 444  top1 74.5%  top2 87.2%  top5 95.7%  mean rank 1.68
+  dist    3 n= 442  top1 60.9%  top2 82.4%  top5 91.4%  mean rank 2.38
+  dist  4-8 n=1809  top1 53.2%  top2 73.4%  top5 88.4%  mean rank 2.63
+  dist   9+ n=2467  top1 49.6%  top2 67.9%  top5 88.0%  mean rank 2.81

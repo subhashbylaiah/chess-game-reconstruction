@@ -1,0 +1,32 @@
+# environments and caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# large or rebuildable data, models and outputs (see README: how to rebuild / download)
+data/
+runs/
+preds/
+*.pt
+
+# HCS-derived benchmark files: rebuilt from the original HCS release, not redistributed
+bench/hcs*.jsonl
+bench/mini.jsonl
+
+# private working notes
+writing-block.md
+Spec Gap-Aware Chess Game Reconstruction.md
+
+# LaTeX build artifacts and drafts
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.log
+paper/*.out
+paper/main_before_tightening.tex
+paper/figs/*.png
+paper/arxiv_upload.zip

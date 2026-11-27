@@ -1,0 +1,19 @@
+missing plies 5871; lambda chosen per fold: {'tuned_on_fold0': 2.0, 'tuned_on_fold1': 1.0}
+ours (E16 + filter)                  top1 57.4%  top2 74.1%  top3 81.9%  top5 89.6%  mean rank 2.52
+    top1 by dist: 1 82.2  2 72.1  3 51.8  4-8 54.2  9+ 50.9
+maia alone                           top1 54.3%  top2 73.9%  top3 82.1%  top5 90.9%  mean rank 2.41
+    top1 by dist: 1 57.3  2 51.4  3 52.0  4-8 53.2  9+ 55.2
+maia + filter                        top1 56.7%  top2 75.4%  top3 83.3%  top5 91.6%  mean rank 2.32
+    top1 by dist: 1 69.1  2 59.2  3 53.8  4-8 53.8  9+ 55.2
+ours + lambda*maia (cross-fitted)    top1 61.9%  top2 78.2%  top3 85.5%  top5 92.5%  mean rank 2.16
+    top1 by dist: 1 84.3  2 72.5  3 58.8  4-8 57.9  9+ 56.9
+full-grid sweep (all games, for reference only):
+  lambda  0.0  top1 57.4%  top2 74.1%  top5 89.6%
+  lambda  0.2  top1 59.4%  top2 76.2%  top5 91.0%
+  lambda  0.5  top1 60.4%  top2 77.7%  top5 91.8%
+  lambda  0.7  top1 61.3%  top2 78.2%  top5 91.9%
+  lambda  1.0  top1 61.8%  top2 78.4%  top5 92.3%
+  lambda  1.5  top1 62.1%  top2 78.4%  top5 92.8%
+  lambda  2.0  top1 61.8%  top2 78.5%  top5 92.8%
+  lambda  3.0  top1 60.9%  top2 78.2%  top5 92.6%
+  lambda  5.0  top1 59.5%  top2 77.5%  top5 92.2%

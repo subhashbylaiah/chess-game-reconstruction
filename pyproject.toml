@@ -1,0 +1,35 @@
+[project]
+name = "recon"
+version = "0.1.0"
+description = "Reading Between the Lines: recovering unrecorded moves from chess scoresheets"
+authors = [
+    { name = "Subhash Bylaiah" }
+]
+license = "AGPL-3.0-or-later"
+requires-python = ">=3.12"
+dependencies = [
+    "chess>=1.11.2",
+    "maia3",
+    "numpy>=2.5.4",
+    "pyarrow>=26.0.1",
+    "torch>=2.15.0",
+    "zstandard>=0.25.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.13.6,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+]
+
+[project.scripts]
+recon = "recon.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.uv.sources]
+maia3 = { git = "https://github.com/CSSLab/maia3", rev = "1e13597c42d4858b7cfd7cfdae01e297263364b2" }

@@ -1,0 +1,68 @@
+{
+ "ALL": {
+  "games": 20,
+  "missing": 277,
+  "top1": 0.3898916967509025,
+  "top3": 0.5956678700361011,
+  "top5": 0.7184115523465704,
+  "typed/game": 3.9,
+  "missing/game": 13.85,
+  "no_typing": 0.1,
+  "avg_rank_if_listed": 2.020100502512563
+ },
+ "preset=missing": {
+  "games": 20,
+  "missing": 277,
+  "top1": 0.3898916967509025,
+  "top3": 0.5956678700361011,
+  "top5": 0.7184115523465704,
+  "typed/game": 3.9,
+  "missing/game": 13.85,
+  "no_typing": 0.1,
+  "avg_rank_if_listed": 2.020100502512563
+ },
+ "gap=10-19": {
+  "games": 9,
+  "missing": 125,
+  "top1": 0.416,
+  "top3": 0.632,
+  "top5": 0.776,
+  "typed/game": 3.111111111111111,
+  "missing/game": 13.88888888888889,
+  "no_typing": 0.1111111111111111,
+  "avg_rank_if_listed": 2.0721649484536084
+ },
+ "gap=5-9": {
+  "games": 6,
+  "missing": 45,
+  "top1": 0.4444444444444444,
+  "top3": 0.6222222222222222,
+  "top5": 0.6888888888888889,
+  "typed/game": 2.3333333333333335,
+  "missing/game": 7.5,
+  "no_typing": 0.0,
+  "avg_rank_if_listed": 1.7741935483870968
+ },
+ "gap=20+": {
+  "games": 4,
+  "missing": 103,
+  "top1": 0.3300970873786408,
+  "top3": 0.5242718446601942,
+  "top5": 0.6504854368932039,
+  "typed/game": 9.0,
+  "missing/game": 25.75,
+  "no_typing": 0.0,
+  "avg_rank_if_listed": 2.08955223880597
+ },
+ "gap=1-4": {
+  "games": 1,
+  "missing": 4,
+  "top1": 0.5,
+  "top3": 1.0,
+  "top5": 1.0,
+  "typed/game": 0.0,
+  "missing/game": 4.0,
+  "no_typing": 1.0,
+  "avg_rank_if_listed": 1.5
+ }
+}

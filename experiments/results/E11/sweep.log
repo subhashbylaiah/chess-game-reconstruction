@@ -1,0 +1,57 @@
+== model --penalty 0
+ALL n=277  top1 36.8%  top2 55.2%  top3 63.2%  top5 74.4%  top10 87.0%  mean rank 4.46  | per game: tap 7.65 expand 2.65 typed 3.55 of 13.8  no-typing 5%  | 0.00s/suggestion
+  dist    1 n=  27  top1 48.1%  top2 66.7%  top5 77.8%  mean rank 3.78
+  dist    2 n=  20  top1 30.0%  top2 50.0%  top5 65.0%  mean rank 6.30
+  dist    3 n=  20  top1 35.0%  top2 55.0%  top5 65.0%  mean rank 5.00
+  dist  4-8 n=  89  top1 29.2%  top2 52.8%  top5 73.0%  mean rank 4.52
+  dist   9+ n= 121  top1 41.3%  top2 55.4%  top5 77.7%  mean rank 4.18
+== model_filter --penalty 6
+ALL n=277  top1 38.3%  top2 55.2%  top3 63.5%  top5 75.1%  top10 87.7%  mean rank 4.34  | per game: tap 7.65 expand 2.75 typed 3.45 of 13.8  no-typing 5%  | 0.00s/suggestion
+  dist    1 n=  27  top1 55.6%  top2 66.7%  top5 81.5%  mean rank 3.41
+  dist    2 n=  20  top1 35.0%  top2 50.0%  top5 70.0%  mean rank 5.35
+  dist    3 n=  20  top1 35.0%  top2 55.0%  top5 65.0%  mean rank 5.00
+  dist  4-8 n=  89  top1 30.3%  top2 52.8%  top5 73.0%  mean rank 4.47
+  dist   9+ n= 121  top1 41.3%  top2 55.4%  top5 77.7%  mean rank 4.17
+== e06_repro --search --max-dist 99 --penalty 0 --first-moves 16 --width 8
+ALL n=277  top1 39.0%  top2 50.5%  top3 59.6%  top5 71.8%  top10 84.8%  mean rank 4.82  | per game: tap 7.00 expand 2.95 typed 3.90 of 13.8  no-typing 10%  | 0.71s/suggestion
+  dist    1 n=  27  top1 81.5%  top2 88.9%  top5 96.3%  mean rank 1.85
+  dist    2 n=  20  top1 55.0%  top2 65.0%  top5 80.0%  mean rank 4.80
+  dist    3 n=  20  top1 50.0%  top2 65.0%  top5 70.0%  mean rank 4.80
+  dist  4-8 n=  89  top1 38.2%  top2 50.6%  top5 75.3%  mean rank 4.61
+  dist   9+ n= 121  top1 25.6%  top2 37.2%  top5 62.8%  mean rank 5.64
+== c16_w8 --search --max-dist 99 --penalty 6 --first-moves 16 --width 8
+ALL n=277  top1 39.0%  top2 50.5%  top3 59.6%  top5 71.1%  top10 84.5%  mean rank 4.80  | per game: tap 7.00 expand 2.85 typed 4.00 of 13.8  no-typing 10%  | 0.71s/suggestion
+  dist    1 n=  27  top1 81.5%  top2 88.9%  top5 96.3%  mean rank 1.85
+  dist    2 n=  20  top1 55.0%  top2 65.0%  top5 80.0%  mean rank 4.50
+  dist    3 n=  20  top1 50.0%  top2 65.0%  top5 70.0%  mean rank 4.80
+  dist  4-8 n=  89  top1 38.2%  top2 50.6%  top5 74.2%  mean rank 4.61
+  dist   9+ n= 121  top1 25.6%  top2 37.2%  top5 62.0%  mean rank 5.65
+== c10_w8 --search --max-dist 99 --penalty 6 --first-moves 10 --width 8
+ALL n=277  top1 40.1%  top2 51.6%  top3 61.4%  top5 74.7%  top10 88.1%  mean rank 4.44  | per game: tap 7.15 expand 3.20 typed 3.50 of 13.8  no-typing 5%  | 0.51s/suggestion
+  dist    1 n=  27  top1 81.5%  top2 88.9%  top5 96.3%  mean rank 1.85
+  dist    2 n=  20  top1 55.0%  top2 65.0%  top5 80.0%  mean rank 4.50
+  dist    3 n=  20  top1 50.0%  top2 65.0%  top5 70.0%  mean rank 4.50
+  dist  4-8 n=  89  top1 40.4%  top2 52.8%  top5 75.3%  mean rank 4.33
+  dist   9+ n= 121  top1 26.4%  top2 38.0%  top5 69.4%  mean rank 5.08
+== c5_w8 --search --max-dist 99 --penalty 6 --first-moves 5 --width 8
+ALL n=277  top1 41.5%  top2 53.4%  top3 66.1%  top5 76.5%  top10 88.1%  mean rank 4.22  | per game: tap 7.40 expand 3.20 typed 3.25 of 13.8  no-typing 5%  | 0.32s/suggestion
+  dist    1 n=  27  top1 81.5%  top2 88.9%  top5 96.3%  mean rank 1.85
+  dist    2 n=  20  top1 45.0%  top2 60.0%  top5 70.0%  mean rank 5.05
+  dist    3 n=  20  top1 50.0%  top2 60.0%  top5 65.0%  mean rank 4.70
+  dist  4-8 n=  89  top1 38.2%  top2 51.7%  top5 73.0%  mean rank 4.37
+  dist   9+ n= 121  top1 33.1%  top2 44.6%  top5 77.7%  mean rank 4.42
+== c10_w32 --search --max-dist 99 --penalty 6 --first-moves 10 --width 32
+ALL n=277  top1 40.4%  top2 53.4%  top3 62.8%  top5 75.8%  top10 88.1%  mean rank 4.36  | per game: tap 7.40 expand 3.10 typed 3.35 of 13.8  no-typing 10%  | 1.69s/suggestion
+  dist    1 n=  27  top1 81.5%  top2 88.9%  top5 96.3%  mean rank 1.85
+  dist    2 n=  20  top1 55.0%  top2 65.0%  top5 80.0%  mean rank 4.50
+  dist    3 n=  20  top1 55.0%  top2 65.0%  top5 75.0%  mean rank 4.40
+  dist  4-8 n=  89  top1 32.6%  top2 52.8%  top5 77.5%  mean rank 4.29
+  dist   9+ n= 121  top1 32.2%  top2 42.1%  top5 69.4%  mean rank 4.93
+== c10_w128 --search --max-dist 99 --penalty 6 --first-moves 10 --width 128
+ALL n=277  top1 41.5%  top2 55.6%  top3 63.2%  top5 75.5%  top10 88.1%  mean rank 4.32  | per game: tap 7.70 expand 2.75 typed 3.40 of 13.8  no-typing 10%  | 5.81s/suggestion
+  dist    1 n=  27  top1 81.5%  top2 88.9%  top5 96.3%  mean rank 1.85
+  dist    2 n=  20  top1 55.0%  top2 65.0%  top5 80.0%  mean rank 4.50
+  dist    3 n=  20  top1 55.0%  top2 65.0%  top5 70.0%  mean rank 4.45
+  dist  4-8 n=  89  top1 32.6%  top2 51.7%  top5 76.4%  mean rank 4.38
+  dist   9+ n= 121  top1 34.7%  top2 47.9%  top5 70.2%  mean rank 4.77
+== c10_tree2 --search --max-dist 99 --penalty 6 --first-moves 10 --width 512 --blank-moves 2

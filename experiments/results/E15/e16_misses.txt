@@ -1,0 +1,31 @@
+
+missing plies: 5871
+
+== Identifiability (optimistic: other missing moves known, clean sheet) ==
+  k=1:  74.5%
+  k=2:   5.1%
+  k=3:   2.2%
+  k=4:   1.4%
+  k>=5:  16.8%
+  uniquely determined (k=1):  74.5%
+  best possible top-1 if we pick uniformly within the equivalent set: 79.6%
+  equivalent set fits in top-2 (k<=2):  79.5%
+
+== Top-1 misses: what was our first suggestion? ==
+  hit         57.4%
+  order       10.9%
+  equivalent   3.8%
+  other       27.9%
+
+== Top-2 misses (true move ranked 3+): what were our 2 suggestions? ==
+  top-2 misses:  25.9%
+    at least one order       10.5%
+    at least one equivalent   2.6%
+    at least one other       12.7%
+
+== Top-1 by distance: hit / order / equivalent / other ==
+     1 n= 709  hit 82.2  order  0.0  equivalent  4.7  other 13.1   unique 72.4
+     2 n= 444  hit 72.1  order  0.0  equivalent 10.1  other 17.8   unique 61.9
+     3 n= 442  hit 51.8  order 10.2  equivalent  7.5  other 30.5   unique 61.5
+   4-8 n=1809  hit 54.2  order 11.0  equivalent  4.4  other 30.3   unique 72.0
+    9+ n=2467  hit 50.9  order 16.1  equivalent  1.4  other 31.6   unique 81.4

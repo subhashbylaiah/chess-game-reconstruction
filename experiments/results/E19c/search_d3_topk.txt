@@ -1,0 +1,8 @@
+n=5871  mean rank 2.00 (chance 15.7)  median rank 1
+top-1  model  65.0%   chance   6.9%
+top-2  model  81.7%   chance  12.4%
+top-3  model  88.3%   chance  16.9%
+top-4  model  91.5%   chance  20.7%
+top-5  model  93.9%   chance  24.1%
+top-8  model  97.3%   chance  33.4%
+top-10 model  98.4%   chance  39.3%

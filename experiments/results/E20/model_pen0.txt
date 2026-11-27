@@ -1,0 +1,1 @@
+ALL n=5871  top1 64.2%  top2 80.9%  top3 87.6%  top5 93.7%  top10 98.5%  mean rank 2.03  | per game: tap 9.36 expand 1.49 typed 0.73 of 11.6  no-typing 58%  | 0.00s/suggestion

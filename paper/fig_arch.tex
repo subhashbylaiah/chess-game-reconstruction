@@ -1,0 +1,70 @@
+% Figure: architecture. Scoresheet tower (left), gated cross-attention (middle), Maia-3 tower (right), then combination, filter + search.
+\begin{figure*}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  font=\footnotesize,
+  tok/.style={draw=black!50, rounded corners=1.5pt, minimum height=0.62cm, inner sep=2pt, align=center, font=\scriptsize},
+  blk/.style={draw=black!60, rounded corners=3pt, minimum height=0.55cm, inner sep=3pt, align=center},
+  ours/.style={blk, fill=teal!10},
+  maia/.style={blk, fill=orange!12},
+  fuse/.style={blk, fill=blue!10, draw=blue!60!black, font=\scriptsize},
+  head/.style={blk, fill=black!4, minimum height=0.5cm, font=\scriptsize},
+  arr/.style={-{Stealth[length=1.8mm]}, thick, black!60},
+  mem/.style={-{Stealth[length=1.8mm]}, thick, blue!55!black, dashed},
+  lbl/.style={font=\scriptsize, text=black!60},
+]
+% ===== scoresheet tower (x 0..7) =====
+\node[tok, fill=black!3, text width=0.55cm] (cls) at (-0.55,0) {CLS};
+\node[tok, fill=teal!5, text width=1.95cm] (sq) at (0.85,0) {64 squares\\piece, last move};
+\node[tok, fill=teal!5, text width=1.75cm] (ctx) at (2.85,0) {6 context\\ratings, TC};
+\node[tok, fill=teal!5, text width=1.75cm] (nt) at (4.75,0) {16 notation\\chars, hints};
+\node[tok, fill=teal!20, text width=2.2cm, very thick] (fut) at (6.8,0) {48 future entries\\+ exact ply offset};
+\node[ours, minimum width=8.9cm] (enc) at (3.15,1.4) {Transformer encoder, 6 layers, $d{=}256$\\[-1pt]{\scriptsize one square embedding shared by board squares and written destinations}};
+\foreach \n in {cls,sq,ctx,nt,fut} \draw[arr] (\n.north) -- (\n.north |- enc.south);
+\node[head] (hmove) at (0.4,2.85) {move\\from$\times$to};
+\node[head] (halign) at (1.75,2.85) {align};
+\node[head] (hgap) at (2.8,2.85) {gap};
+\node[head, fill=teal!20, very thick] (hfb) at (5.1,2.85) {board before the next\\2 written plies};
+\foreach \n in {hmove,halign,hgap,hfb} \draw[arr] (\n.south |- enc.north) -- (\n.south);
+\node[lbl] at (5.1,3.55) {auxiliary (training only)};
+\node[font=\footnotesize\bfseries, text=teal!50!black] at (3.15,-0.85) {Scoresheet tower (5.3M)};
+
+% ===== gated cross-attention (x ~9) and Maia tower (x ~11.6) =====
+\node[tok, fill=orange!6, text width=2.6cm] (mtok) at (12.15,0) {64 squares $\times$\\8 past boards + 2 ratings};
+\node[maia, minimum width=2.1cm] (b1) at (12.15,1.15) {Maia block 1};
+\node[fuse, minimum width=1.7cm] (f1) at (9.7,1.15) {gated x-attn 1};
+\node[maia, minimum width=2.1cm] (b2) at (12.15,2.2) {Maia block 2};
+\node[fuse, minimum width=1.7cm] (f2) at (9.7,2.2) {gated x-attn 2};
+\node[text=black!50] at (10.95,2.85) {$\vdots$ \;(8 blocks)};
+\node[maia, minimum width=2.1cm] (b8) at (12.15,3.5) {Maia block 8};
+\node[fuse, minimum width=1.7cm] (f8) at (9.7,3.5) {gated x-attn 8};
+\node[maia, minimum width=2.1cm] (mhead) at (12.15,4.55) {from$\times$to logits};
+\draw[arr] (mtok.north) -- (b1.south);
+\draw[arr] (b1.west) -- (f1.east); \draw[arr] (f1.north) -- ++(0,0.22) -| (b2.south);
+\draw[arr] (b2.west) -- (f2.east);
+\draw[arr] (b8.west) -- (f8.east); \draw[arr] (f8.north) -- ++(0,0.22) -| (mhead.south);
+\node[font=\footnotesize\bfseries, text=orange!60!black] at (12.15,-0.85) {Maia-3 tower (pretrained, 5M / 23M)};
+% memory: final scoresheet states h feed every fusion block (a vertical bus)
+\coordinate (bus) at (8.35,1.4);
+\draw[thick, blue!55!black] (enc.east) -- (bus);
+\node[lbl, text=blue!55!black, above] at (7.95,1.4) {$h$};
+\draw[thick, blue!55!black] (bus) -- (bus |- f8.west);
+\draw[mem] (bus |- f1.west) -- (f1.west);
+\draw[mem] (bus |- f2.west) -- (f2.west);
+\draw[mem] (bus |- f8.west) -- (f8.west);
+\fill[blue!55!black] (bus |- f1.west) circle (1.3pt) (bus |- f2.west) circle (1.3pt);
+
+% ===== combination, filter, search =====
+\node[blk, fill=black!6] (comb) at (6.0,5.35) {$s(m)=s_{\text{ours}}(m)+\lambda\,\log p_{\text{Maia}}(m)$};
+\draw[arr] (hmove.north) |- (comb.west);
+\draw[arr] (mhead.north) |- (comb.east);
+\node[blk, fill=black!6, align=center] (post) at (6.0,6.4) {feasibility filter (penalty per impossible later entry)\\[-1pt]+ evidence search within 6 plies of the next written move};
+\draw[arr] (comb.north) -- (post.south);
+\node[font=\footnotesize\bfseries] (out) at (6.0,7.3) {ranked suggestions: tap 2 / expand 5 / type};
+\draw[arr] (post.north) -- (out.south);
+\end{tikzpicture}%
+}
+\caption{Architecture. \textbf{Left:} the scoresheet tower reads the board, context, the nearby notation and up to 48 later written entries, each with its exact ply offset. Its auxiliary head predicts the board before the next two written plies (training only). \textbf{Right:} the pretrained Maia-3 tower reads the last 8 positions and both ratings. After each of its 8 blocks, a gated cross-attention lets the 64 square states read the scoresheet tower's final states $h$; the gates are closed at initialisation, so training starts from Maia-3 exactly. \textbf{Top:} move scores add the two heads with a learned weight $\lambda$, followed by the feasibility filter and the evidence search.}
+\label{fig:arch}
+\end{figure*}
